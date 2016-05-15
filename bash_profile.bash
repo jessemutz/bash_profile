@@ -1,7 +1,5 @@
 # Includes
-source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-
-MACHINE_NAME=$(cat /info/machine_name)
+# source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 
 # Make sure anything added by homebrew takes precendence over OS X defaults.
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/Cellar/ruby/1.9.3-p194/bin:$PATH"
@@ -132,9 +130,9 @@ alias rma="sudo lunchy restart httpd22;lunchy restart mysql"
 alias rap="sudo lunchy restart httpd22"
 alias rmy="lunchy restart mysql"
 
-alias php53="brew-php-select --set php53"
-alias php54="brew-php-select --set php54"
-alias php55="brew-php-select --set php55"
+alias php55="brew unlink php56 | brew unlink php70 | brew link php55"
+alias php56="brew unlink php55 | brew unlink php70 | brew link php56"
+alias php70="brew unlink php55 | brew unlink php56 | brew link php70"
 
 alias fdns="dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
 

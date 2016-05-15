@@ -4,7 +4,7 @@
 ###########################################################
 # Include synced version of our bash profile.
 #
-SHARED_LOCATION=$HOME/Dropbox/DEV_TOOLS
+SHARED_LOCATION=$HOME/dev_tools
 BREW_DRUSH=$(brew --prefix drush)
 source $SHARED_LOCATION/drush_completion.bash
 source $SHARED_LOCATION/bash_profile.bash
@@ -111,7 +111,7 @@ function prompt {
   local GREEN="\[\033[0;32m\]"
   local BLUE="\[\033[0;34m\]"
   local GRAY="\[\033[1;37m\]"
-  local LIGHT_BLUE="\[\033[1;34m\]"
+  local PURPLE="\[\033[1;34m\]"
   local YELLOW="\[\033[0;33m\]"
   local RED="\[\033[0;31m\]"
 
@@ -121,8 +121,8 @@ function prompt {
   fi
 
   if [ "\$(type -t __git_ps1)" ] && [ "\$(type -t __drush_ps1)" ]; then
-    # export PS1="${CYAN}jessemutz"${GREEN}' $(wd "(%s)")'${BLUE}' $(__git_ps1 "(%s)")'${LIGHT_BLUE}' $(__drush_ps1 "[%s]")'"${GRAY}$ \[$(tput sgr0)\]"
-    export PS1="${BLUE}jessemutz"${GREEN}'$(wd "(%s)")'${CYAN}'$(__git_ps1 "(%s)")'${YELLOW}'$(__drush_ps1 "[%s]")'"${GRAY}$ \[$(tput sgr0)\]"
+    # export PS1="${CYAN}jessemutz"${GREEN}' $(wd "(%s)")'${BLUE}' $(__git_ps1 "(%s)")'${PURPLE}' $(__drush_ps1 "[%s]")'"${GRAY}$ \[$(tput sgr0)\]"
+    export PS1="${PURPLE}mutz"${GREEN}'$(wd "(%s)")'${CYAN}'$(__git_ps1 "(%s)")'${YELLOW}'$(__drush_ps1 "[%s]")'"${GRAY}$ \[$(tput sgr0)\]"
   fi
 }
 # Initialize our prompt.
