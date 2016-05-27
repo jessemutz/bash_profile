@@ -36,38 +36,13 @@ function gd
       echo "No changes since last commit."
     fi
 }
-function gclone
-{
-  cmd=""
-  if [ -z "$2" ]
-    then
-      cmd="git clone git@clikgit.com:$1"
-  else
-    case "$1" in
-      "clik" )
-        cmd="git clone git@clikgit.com:$2"
-        ;;
-
-      "drupal" )
-        cmd="git clone http://git.drupal.org/project/$2.git"
-        ;;
-
-      "ghcf" )
-        cmd="git clone git@github.com:Clikfocus/$2.git"
-        ;;
-    esac
-  fi
-
-  echo "$cmd"
-  $cmd
-}
 
 # git remove deleted items in working directory
 function grmwd {
   git status .|grep 'deleted:'|awk '{print $3}'|xargs git rm
 }
 
-# Druch clear caches
+# Drush 7.x clear caches
 alias dcca="drush cc all"
 alias clearall="drush cc all"
 alias cleardrush="drush cc drush"
@@ -81,26 +56,17 @@ alias clearreg="drush cc registry"
 alias cleartoken="drush cc token"
 alias clearviews="drush cc views"
 
-# SSH
-alias sc="ssh clikbox.com"
-alias sr="ssh r.clkd.co"
-alias sb="ssh brandoncone@b.clkd.co"
-alias sj="ssh jessemutz@j.clkd.co"
-
-alias tmreload="osascript -e 'tell app "TextMate" to reload bundles'"
-
 alias ct='ctags --langmap=php:.engine.inc.module.theme.php --php-kinds=cdfi --languages=php --recurse'
 alias cts='ctags --langmap=php:.engine.inc.module.theme.php --php-kinds=cdfi --languages=php --recurse -f .tags'
 
 alias cw='compass watch .'
-alias cc="compass compile"
 
 
 # export DRUSH_PHP="/usr/local/opt/php55/bin/php"
 export DRUSH_PHP="/usr/local/bin/php"
 
 
-alias pecl="/Applications/MAMP/bin/php/php5.5.10/bin/pecl"
+# alias pecl="/Applications/MAMP/bin/php/php5.5.10/bin/pecl"
 
 # pretty colors in terminal :)
 export CLICOLOR=1
@@ -117,18 +83,18 @@ export EDITOR="subl -n"
 #export EDITOR=/usr"/local/bin/mate"
 alias sub="subl -n"
 
+alias pc="pwd | pbcopy"
+alias o="open ."
+
+# Localhost and Local Development
 alias ht="cd ~/htdocs"
 alias hosts="sudo $EDITOR /etc/hosts"
 alias vhost="$EDITOR ~/vhost.d"
 alias aliases="$EDITOR ~/.drush/aliases.drushrc.php"
 alias drushrc="$EDITOR ~/.drushrc.php"
-alias pc="pwd | pbcopy"
-alias o="open ."
-
-# Localhost
-alias rma="sudo lunchy restart httpd22;lunchy restart mysql"
-alias rap="sudo lunchy restart httpd22"
-alias rmy="lunchy restart mysql"
+alias rma="sudo apachectl restart | mysql.server restart"
+alias rap="sudo apachectl restart"
+alias rmy="mysql.server restart"
 
 alias php55="brew unlink php56 | brew unlink php70 | brew link php55"
 alias php56="brew unlink php55 | brew unlink php70 | brew link php56"
@@ -138,7 +104,7 @@ alias fdns="dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
 
 # Start, stop and restart solr easily.
 function solr {
-  solrpath="/Users/ryandekker/Library/LaunchAgents/com.apache.solr.plist"
+  solrpath="$HOME/Library/LaunchAgents/com.apache.solr.plist"
   case "$1" in
     "start" )
       cmd="launchctl load -w $solrpath"

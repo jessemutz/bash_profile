@@ -4,13 +4,13 @@
 ###########################################################
 # Include synced version of our bash profile.
 #
-SHARED_LOCATION=$HOME/dev_tools
+ROOT_LOCATION=$HOME/dev_tools
 BREW_DRUSH=$(brew --prefix drush)
-source $SHARED_LOCATION/drush_completion.bash
-source $SHARED_LOCATION/bash_profile.bash
-source $SHARED_LOCATION/git-completion.bash
-source $SHARED_LOCATION/git-prompt.sh
-source $SHARED_LOCATION/drush.bashrc
+source $ROOT_LOCATION/drush_completion.bash
+source $ROOT_LOCATION/bash_profile.bash
+source $ROOT_LOCATION/git-completion.bash
+source $ROOT_LOCATION/git-prompt.sh
+source $ROOT_LOCATION/drush.bashrc
 #
 # Place additions and overrides below
 ###########################################################
@@ -22,7 +22,7 @@ export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/Cellar/ruby/$RU
 
 # Quick CD to places
 alias sites="cd ~/Sites"
-alias design="cd ~/Design"
+alias desk="cd ~/Desktop"
 alias pending="cd ~/Design/pending_rejected"
 
 # Git Aliases and shortcuts.
