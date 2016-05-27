@@ -93,11 +93,10 @@ alias apchrs="sudo apachectl restart"
 alias apchst="sudo apachectl start"
 alias apchstop="sudo apachectl stop"
 
-# alias sanmail="drush sqlq \"UPDATE users SET mail = CONCAT('jesse+', --sanitize-email="user+%uid@localhost", '@clikfocus.com'))\""
-alias sanmailcf="drush sqlsan --sanitize-email=\"jesse+user_%uid@clikfocus.com\" -y"
-alias sanmail="drush sql-sanitize --sanitize-email=\"jesse+user_%uid@localhost\" -y"
+
+alias sanmail="drush sql-sanitize --sanitize-email=\"user_%uid@localhost\" -y"
 alias sanpass="drush sql-sanitize --sanitize-password -y"
-alias sandb="drush sql-sanitize --sanitize-password=\"PurpleNurple12!\" -y && drush sql-sanitize --sanitize-email=\"jesse+user_%uid@clikfocus.com\" -y"
+alias sandb="drush sql-sanitize --sanitize-password=\"PurpleNurple12!\" -y && drush sql-sanitize --sanitize-email=\"user_%uid@localhost\" -y"
 
 # Drupal 8
 alias cr="drush cr"
@@ -121,7 +120,7 @@ function prompt {
   fi
 
   if [ "\$(type -t __git_ps1)" ] && [ "\$(type -t __drush_ps1)" ]; then
-    # export PS1="${CYAN}jessemutz"${GREEN}' $(wd "(%s)")'${BLUE}' $(__git_ps1 "(%s)")'${PURPLE}' $(__drush_ps1 "[%s]")'"${GRAY}$ \[$(tput sgr0)\]"
+    # export PS1="${CYAN}MAC"${GREEN}' $(wd "(%s)")'${BLUE}' $(__git_ps1 "(%s)")'${PURPLE}' $(__drush_ps1 "[%s]")'"${GRAY}$ \[$(tput sgr0)\]"
     export PS1="${PURPLE}mutz"${GREEN}'$(wd "(%s)")'${CYAN}'$(__git_ps1 "(%s)")'${YELLOW}'$(__drush_ps1 "[%s]")'"${GRAY}$ \[$(tput sgr0)\]"
   fi
 }
